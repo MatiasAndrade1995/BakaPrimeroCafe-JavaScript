@@ -17,7 +17,6 @@ let total;
 
 //FUNCIONES
 function reset() {
-    cantidadDeProductos = 0;
     sumaProductos = 0;
     cantidadCafe = 0;
     cantidadTostado = 0;
@@ -47,7 +46,7 @@ do {
     let nombreUsuario = prompt("Ingrese su Nombre");
     if (nombreUsuario != "") {
         alert("Bienvenido " + nombreUsuario + "! ¿Qué producto desea solicitar?")
-        producto = parseInt(prompt("Ingrese producto deseado seleccionando número: \n 1-Café \n 2-Tostado \n 3-Capuccino \n 4-Brownie \n 5-Té \n 0- Finalizar"))
+        producto = parseInt(prompt("Ingrese producto deseado seleccionando número: \n 1-Café \n 2-Tostado \n 3-Capuccino \n 4-Brownie \n 5-Té \n 0- Salir"))
         console.log("Nombre del cliente " + nombreUsuario)
         while (producto != 0) {
             switch (producto) {
@@ -89,7 +88,7 @@ do {
                 default: opcionValida();
                     console.log("Eligió una opción inválida");
             }
-            producto = parseInt(prompt("Ingrese productos adcionales que desee solicitar: \n 1-Café \n 2-Tostado \n 3-Capuccino \n 4-Brownie \n 5-Té \n 0-Salir"))
+            producto = parseInt(prompt("Ingrese productos adcionales que desee solicitar: \n 1-Café \n 2-Tostado \n 3-Capuccino \n 4-Brownie \n 5-Té \n 0 - Finalizar"))
             if (producto == 0) {
                 formulaEleccion();
                 while (eleccion != 0) {
