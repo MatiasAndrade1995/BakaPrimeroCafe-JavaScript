@@ -4,7 +4,6 @@ let tostado = 300;
 let capuccino = 250;
 let brownie = 350;
 let te = 175;
-let cantidadDeProductos = 0;
 let sumaProductos = 0;
 let cantidadCafe = 0
 let cantidadTostado = 0
@@ -17,7 +16,6 @@ const descuento = 20;
 let total;
 
 //FUNCIONES
-
 function reset() {
     cantidadDeProductos = 0;
     sumaProductos = 0;
@@ -26,12 +24,17 @@ function reset() {
     cantidadCapuccino = 0;
     cantidadBrownie = 0;
     cantidadTe = 0;
-    alert("Indico que su pedido es erroneo, por favor realicelo nuevamente");
+    alert("Indico que su pedido es erróneo por favor realicelo nuevamente");
     console.log("El pedido ha sido reiniciado el pedido.")
 }
 
 function formulaEleccion() {
     eleccion = parseInt(prompt("Usted solicitó: \n" + cantidadCafe + " Café" + "\n" + cantidadTostado + " Tostado" + "\n" + cantidadCapuccino + " Capuccino" + "\n" + cantidadBrownie + " Brownie" + "\n" + cantidadTe + " Té \n \n ¿Es correcto? \n 1- Sí \n 2- No. \n 3- Cancelar pedido. "));
+}
+
+
+function cantidadDeProductos(cantidadCafe, cantidadTostado, cantidadCapuccino, cantidadBrownie, cantidadTe) {
+    return cantidadCafe + cantidadTostado + cantidadCapuccino + cantidadBrownie + cantidadTe;
 }
 
 function opcionValida() {
@@ -50,7 +53,6 @@ do {
             switch (producto) {
                 case 1:
                     sumaProductos += cafe;
-                    cantidadDeProductos++;
                     cantidadCafe++;
                     alert("Usted eligió Café");
                     alert("Tiene solicitados " + cantidadCafe + " pedidos de Café");
@@ -58,7 +60,6 @@ do {
                     break;
                 case 2:
                     sumaProductos += tostado;
-                    cantidadDeProductos++;
                     cantidadTostado++;
                     alert("Usted eligió Tostado");
                     alert("Tiene solicitados " + cantidadTostado + " pedidos de Tostado");
@@ -66,7 +67,6 @@ do {
                     break;
                 case 3:
                     sumaProductos += capuccino;
-                    cantidadDeProductos++;
                     cantidadCapuccino++;
                     alert("Usted eligió Capuccino");
                     alert("Tiene solicitados " + cantidadCapuccino + " pedidos de Capuccino");
@@ -74,7 +74,6 @@ do {
                     break;
                 case 4:
                     sumaProductos += brownie;
-                    cantidadDeProductos++;
                     cantidadBrownie++;
                     alert("Usted eligió Brownie");
                     alert("Tiene solicitados " + cantidadBrownie + " pedidos de Brownie");
@@ -82,7 +81,6 @@ do {
                     break;
                 case 5:
                     sumaProductos += te;
-                    cantidadDeProductos++;
                     cantidadTe++;
                     alert("Usted eligió Té");
                     alert("Tiene solicitados " + cantidadTe + " pedidos de Té");
@@ -97,9 +95,9 @@ do {
                 while (eleccion != 0) {
                     switch (eleccion) {
                         case 1:
-                            alert("Usted solicitó " + cantidadDeProductos + " productos.");
-                            console.log("CANTIDAD DE " + cantidadDeProductos + " UNIDADES")
-                            if (cantidadDeProductos >= 5) {
+                            alert("Usted solicitó " + cantidadDeProductos(cantidadCafe, cantidadTostado, cantidadCapuccino, cantidadBrownie, cantidadTe) + " productos.");
+                            console.log("CANTIDAD DE " + cantidadDeProductos(cantidadCafe, cantidadTostado, cantidadCapuccino, cantidadBrownie, cantidadTe) + " UNIDADES")
+                            if (cantidadDeProductos(cantidadCafe, cantidadTostado, cantidadCapuccino, cantidadBrownie, cantidadTe) >= 5) {
                                 parseFloat(total = sumaProductos - ((sumaProductos * descuento) / 100).toFixed(2));
                                 alert(nombreUsuario + " Usted accederá al % 20 de nuestro descuento.");
                                 console.log("Accede al descuento");
@@ -108,7 +106,7 @@ do {
                                 alert("¡Gracias por su compra!");
                                 console.log("¡GRACIAS POR SU COMPRA!")
                             } else {
-                                if (cantidadDeProductos == 0) {
+                                if (cantidadDeProductos(cantidadCafe, cantidadTostado, cantidadCapuccino, cantidadBrownie, cantidadTe) == 0) {
                                     alert("No ha realizado compra.");
                                 } else {
                                     total = sumaProductos;
@@ -138,11 +136,9 @@ do {
                     }
                 }
             }
-        } alert("Usted no realizó ningun pedido.")
-            console.log("NO REALIZA PEDIDO");
+        }
     } else {
         alert("Usted no ingresó un nombre");
         console.log("Eligió una opción inválida");
-        cierre = 2;
     }
 } while (cierre == 2)
