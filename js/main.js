@@ -31,8 +31,8 @@ function eleccionCafe(productos) {
     const cafesFiltrados = productos.filter((element) => element.nombre.includes("Cafe"))
     console.log(cafesFiltrados)
     let cafeDatos = "Opciones \n"
-    cafesFiltrados.forEach((element) => {
-        cafeDatos += `1- ${element.nombre} - Valor $${element.precio} \n`
+    cafesFiltrados.forEach((cafe, indice) => {
+        cafeDatos += `${indice + 1} - ${cafe.nombre} - Valor $${cafe.precio} \n`
     })
     producto = parseInt(prompt((cafeDatos) + "0- Salir"))
     return producto;
@@ -43,8 +43,8 @@ function eleccionCafeAgregar(productos) {
     const cafesFiltro = productos.filter((cafe) => cafe.nombre.includes("Cafe"))
     console.log(cafesFiltro)
     let cafeDatos = "¿Desea agregar otra opción? \n"
-    cafesFiltro.forEach((cafe) => {
-        cafeDatos += `1- ${cafe.nombre} - Valor $${cafe.precio} \n`
+    cafesFiltro.forEach((cafe,indice) => {
+        cafeDatos += `${indice + 1} - ${cafe.nombre} - Valor $${cafe.precio} \n`
     })
     producto = parseInt(prompt((cafeDatos) + "0- Salir"))
     return producto;
@@ -55,8 +55,8 @@ function eleccionCookie(productos) {
     const cookiesFiltro = productos.filter((cookie) => cookie.nombre.includes("Cookie"))
     console.log(cookiesFiltro)
     let cookieDatos = "Opciones \n"
-    cookiesFiltro.forEach((cookie) => {
-        cookieDatos += `1- ${cookie.nombre} - Valor $${cookie.precio} \n`
+    cookiesFiltro.forEach((cookie,indice) => {
+        cookieDatos += `${indice + 1} - ${cookie.nombre} - Valor $${cookie.precio} \n`
     })
     producto = parseInt(prompt((cookieDatos) + "0- Salir"))
     return producto;
@@ -66,8 +66,8 @@ function eleccionCookieAgregar(productos) {
     const cookiesFiltro = productos.filter((cookie) => cookie.nombre.includes("Cookie"))
     console.log(cookiesFiltro)
     let cookieDatos = "¿Desea agregar otra opción? \n"
-    cookiesFiltro.forEach((cookie) => {
-        cookieDatos += `1- ${cookie.nombre} - Valor $${cookie.precio} \n`
+    cookiesFiltro.forEach((cookie,indice) => {
+        cookieDatos += `${indice + 1} - ${cookie.nombre} - Valor $${cookie.precio} \n`
     })
     producto = parseInt(prompt((cookieDatos) + "0- Salir"))
     return producto;
@@ -78,8 +78,8 @@ function eleccionPorcion(productos) {
     const porcionesFiltro = productos.filter((porcion) => porcion.nombre.includes("Porcion"))
     console.log(porcionesFiltro)
     let porcionDatos = "Opciones \n"
-    porcionesFiltro.forEach((porcion) => {
-        porcionDatos += `1- ${porcion.nombre} - Valor $${porcion.precio} \n`
+    porcionesFiltro.forEach((porcion,indice) => {
+        porcionDatos += `${indice + 1} - ${porcion.nombre} - Valor $${porcion.precio} \n`
     })
     producto = parseInt(prompt((porcionDatos) + "0- Salir"))
     return producto;
@@ -87,11 +87,11 @@ function eleccionPorcion(productos) {
 
 function eleccionPorcionAgregar(productos) {
     let producto;
-    const porcionFiltro = productos.filter((porcion) => porcion.nombre.includes("Porcion"))
+    const porcionFiltro = productos.filter((porcion,indice) => porcion.nombre.includes("Porcion"))
     console.log(porcionFiltro)
     let porcionDatos = "¿Desea agregar otra opción? \n"
-    porcionFiltro.forEach((porcion) => {
-        porcionDatos += `1- ${porcion.nombre} - Valor $${porcion.precio} \n`
+    porcionFiltro.forEach((porcion,indice) => {
+        porcionDatos += `${indice + 1} - ${porcion.nombre} - Valor $${porcion.precio} \n`
     })
     producto = parseInt(prompt((porcionDatos) + "0- Salir"))
     return producto;
@@ -102,8 +102,8 @@ function eleccionPostre(productos) {
     const postresFiltro = productos.filter((postre) => postre.nombre.includes("Postre"))
     console.log(postresFiltro)
     let postreDatos = "Opciones \n"
-    postresFiltro.forEach((postre) => {
-        postreDatos += `1- ${postre.nombre} - Valor $${postre.precio} \n`
+    postresFiltro.forEach((postre,indice) => {
+        postreDatos += `${indice + 1} - ${postre.nombre} - Valor $${postre.precio} \n`
     })
     producto = parseInt(prompt((postreDatos) + "0- Salir"))
     return producto;
@@ -114,14 +114,12 @@ function eleccionPostreAgregar(productos) {
     const postresFiltro = productos.filter((postre) => postre.nombre.includes("Postre"))
     console.log(postresFiltro)
     let postreDatos = "¿Desea agregar otra opción? \n"
-    postresFiltro.forEach((postre) => {
-        postreDatos += `1- ${postre.nombre} - Valor $${postre.precio} \n`
+    postresFiltro.forEach((postre,indice) => {
+        postreDatos += `${indice + 1} - ${postre.nombre} - Valor $${postre.precio} \n`
     })
     producto = parseInt(prompt((postreDatos) + "0- Salir"))
     return producto;
 }
-
-
 function cantidadDeProductos(productos) {
     let totalProductos = 0
     productos.forEach(element => {
@@ -243,7 +241,7 @@ do {
                             precioTotal = costoTotal(productos)
                             if (total >= 5) {
                                 totalConDescuento = precioTotal - parseFloat((precioTotal * descuento) / 100).toFixed(2);
-                                alert(nombreUsuario + "solicitó" + total + "productos.")
+                                alert(nombreUsuario + " solicitó " + total + " productos.")
                                 alert(" Usted accederá al % 20 de nuestro descuento.");
                                 console.log("Accede al descuento");
                                 alert("Deberá abonar un total de $ " + totalConDescuento);
