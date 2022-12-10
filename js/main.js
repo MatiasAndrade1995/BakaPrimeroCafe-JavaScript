@@ -177,23 +177,23 @@ do {
             switch (tipoProducto) {
                 case 1: do {
                     producto = eleccionCafe(productos);
-                    if ((producto > 3 || producto < 0)) {
+                    if (producto > 3 || producto < 0 || isNaN(producto)) {
                         opcionValida();
                         console.log("Eligió una opción inválida");
                     }
-                } while (producto > 3 || producto < 0)
-                    while (producto != 0 && producto < 4) {
+                } while (producto > 3 || producto < 0 || isNaN(producto))
+                    while (producto != 0 && producto < 4 ) {
                         productos[producto - 1].cantidad += 1;
-                        producto = eleccionCafeAgregar(productos);
+                        producto = eleccionCafeAgregar(productos); 
                     } 
                     break;
                 case 2: do {
                     producto = eleccionCookie(productos);
-                    if ((producto > 3 || producto < 0)) {
+                    if (producto > 3 || producto < 0 || isNaN(producto)) {
                         opcionValida();
                         console.log("Eligió una opción inválida");
                     }
-                } while (producto > 3 || producto < 0)
+                } while (producto > 3 || producto < 0 || isNaN(producto))
                     while (producto != 0 && producto < 4) {
                         productos[producto + 2].cantidad += 1;
                         producto = eleccionCookieAgregar(productos);
@@ -201,11 +201,11 @@ do {
                     break;
                 case 3: do {
                     producto = eleccionPorcion(productos);
-                    if ((producto > 3 || producto < 0)) {
+                    if (producto > 3 || producto < 0 || isNaN(producto)) {
                         opcionValida();
                         console.log("Eligió una opción inválida");
                     }
-                } while (producto > 3 || producto < 0)
+                } while (producto > 3 || producto < 0 || isNaN(producto))
                     while (producto != 0 && producto < 4) {
                         productos[producto + 5].cantidad += 1;
                         producto = eleccionPorcionAgregar(productos)
@@ -213,11 +213,11 @@ do {
                     break;
                 case 4: do {
                     producto = eleccionPostre(productos);
-                    if ((producto > 3 || producto < 0)) {
+                    if (producto > 3 || producto < 0 || isNaN(producto)) {
                         opcionValida();
                         console.log("Eligió una opción inválida");
                     }
-                } while (producto > 3 || producto < 0)
+                } while (producto > 3 || producto < 0 || isNaN(producto))
                     while (producto != 0 && producto < 4) {
                         productos[producto + 8].cantidad += 1;
                         producto = eleccionPostreAgregar(productos)
@@ -289,3 +289,4 @@ do {
         cierre = 2;
     }
 } while (cierre == 2)
+
