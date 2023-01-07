@@ -1,5 +1,4 @@
 const renderProductos = () => {
-    const productos = cargarProductosLS();
     let productosHTML = "";
     productos.forEach(element => {
         productosHTML +=
@@ -14,9 +13,8 @@ const renderProductos = () => {
                         <button class="btn btn-secondary" onClick="agregarAlCarrito(${element.id});">Comprar</button>
                     </div>
                 </div>
-            </div>`
+            </div>`     
     })
-
     document.getElementById("productos").innerHTML = productosHTML
 }
 
