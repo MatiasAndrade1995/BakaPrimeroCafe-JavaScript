@@ -1,292 +1,157 @@
-
-const productos = [
-
-    { id: 1, nombre: "Cafe Kinder", precio: 300, cantidad: 0 },
-    { id: 2, nombre: "Cafe Arabe", precio: 200, cantidad: 0 },
-    { id: 3, nombre: "Cafe Tostado Cheddar", precio: 400, cantidad: 0 },
-    { id: 4, nombre: "Cookie Chocolate", precio: 150, cantidad: 0 },
-    { id: 5, nombre: "Cookie Rocklet", precio: 150, cantidad: 0 },
-    { id: 6, nombre: "Cookie Chips", precio: 150, cantidad: 0 },
-    { id: 7, nombre: "Porcion Tarta Mixta", precio: 250, cantidad: 0 },
-    { id: 8, nombre: "Porcion Brownie Chocolate", precio: 170, cantidad: 0 },
-    { id: 9, nombre: "Porcion TartaQueso", precio: 250, cantidad: 0 },
-    { id: 10, nombre: "Postre Mouse de Limon Chocolate", precio: 350, cantidad: 0 },
-    { id: 11, nombre: "Postre Helado", precio: 250, cantidad: 0 },
-    { id: 12, nombre: "Postre Licuado", precio: 230, cantidad: 0 }
-
-]
-
-const descuento = 20;
-let tipoProducto;
-let producto;
-let eleccion = 0;
-let total = 0;
-let precioTotal = 0;
-let totalConDescuento = 0;
-let cierre;
-let solicito = 0;
-
-function eleccionCafe(productos) {
-    let producto;
-    const cafesFiltrados = productos.filter((element) => element.nombre.includes("Cafe"))
-    console.log(cafesFiltrados)
-    let cafeDatos = "Opciones \n"
-    cafesFiltrados.forEach((cafe, indice) => {
-        cafeDatos += `${indice + 1} - ${cafe.nombre} - Valor $${cafe.precio} \n`
-    })
-    producto = parseInt(prompt((cafeDatos) + "0- Salir"))
-    return producto;
-}
-
-function eleccionCafeAgregar(productos) {
-    let producto;
-    const cafesFiltro = productos.filter((cafe) => cafe.nombre.includes("Cafe"))
-    console.log(cafesFiltro)
-    let cafeDatos = "¿Desea agregar otra opción? \n"
-    cafesFiltro.forEach((cafe,indice) => {
-        cafeDatos += `${indice + 1} - ${cafe.nombre} - Valor $${cafe.precio} \n`
-    })
-    producto = parseInt(prompt((cafeDatos) + "0- Salir"))
-    return producto;
-}
-
-function eleccionCookie(productos) {
-    let producto;
-    const cookiesFiltro = productos.filter((cookie) => cookie.nombre.includes("Cookie"))
-    console.log(cookiesFiltro)
-    let cookieDatos = "Opciones \n"
-    cookiesFiltro.forEach((cookie,indice) => {
-        cookieDatos += `${indice + 1} - ${cookie.nombre} - Valor $${cookie.precio} \n`
-    })
-    producto = parseInt(prompt((cookieDatos) + "0- Salir"))
-    return producto;
-}
-function eleccionCookieAgregar(productos) {
-    let producto;
-    const cookiesFiltro = productos.filter((cookie) => cookie.nombre.includes("Cookie"))
-    console.log(cookiesFiltro)
-    let cookieDatos = "¿Desea agregar otra opción? \n"
-    cookiesFiltro.forEach((cookie,indice) => {
-        cookieDatos += `${indice + 1} - ${cookie.nombre} - Valor $${cookie.precio} \n`
-    })
-    producto = parseInt(prompt((cookieDatos) + "0- Salir"))
-    return producto;
-}
-
-function eleccionPorcion(productos) {
-    let producto;
-    const porcionesFiltro = productos.filter((porcion) => porcion.nombre.includes("Porcion"))
-    console.log(porcionesFiltro)
-    let porcionDatos = "Opciones \n"
-    porcionesFiltro.forEach((porcion,indice) => {
-        porcionDatos += `${indice + 1} - ${porcion.nombre} - Valor $${porcion.precio} \n`
-    })
-    producto = parseInt(prompt((porcionDatos) + "0- Salir"))
-    return producto;
-}
-
-function eleccionPorcionAgregar(productos) {
-    let producto;
-    const porcionFiltro = productos.filter((porcion,indice) => porcion.nombre.includes("Porcion"))
-    console.log(porcionFiltro)
-    let porcionDatos = "¿Desea agregar otra opción? \n"
-    porcionFiltro.forEach((porcion,indice) => {
-        porcionDatos += `${indice + 1} - ${porcion.nombre} - Valor $${porcion.precio} \n`
-    })
-    producto = parseInt(prompt((porcionDatos) + "0- Salir"))
-    return producto;
-}
-
-function eleccionPostre(productos) {
-    let producto;
-    const postresFiltro = productos.filter((postre) => postre.nombre.includes("Postre"))
-    console.log(postresFiltro)
-    let postreDatos = "Opciones \n"
-    postresFiltro.forEach((postre,indice) => {
-        postreDatos += `${indice + 1} - ${postre.nombre} - Valor $${postre.precio} \n`
-    })
-    producto = parseInt(prompt((postreDatos) + "0- Salir"))
-    return producto;
-}
-
-function eleccionPostreAgregar(productos) {
-    let producto;
-    const postresFiltro = productos.filter((postre) => postre.nombre.includes("Postre"))
-    console.log(postresFiltro)
-    let postreDatos = "¿Desea agregar otra opción? \n"
-    postresFiltro.forEach((postre,indice) => {
-        postreDatos += `${indice + 1} - ${postre.nombre} - Valor $${postre.precio} \n`
-    })
-    producto = parseInt(prompt((postreDatos) + "0- Salir"))
-    return producto;
-}
-function cantidadDeProductos(productos) {
-    let totalProductos = 0
+const renderProductos = () => {
+    const productos = cargarProductosLS();
+    let productosHTML = "";
     productos.forEach(element => {
-        totalProductos += element.cantidad;
+        productosHTML +=
+            `<div class="col-md-4 mb-4 d-flex justify-content-center">
+                <div class="card text-center align-items-center border border-secondary" style="width: 18rem;">
+                <div class="contenedorImagen">
+                    <img src="images/${element.imagen}" class="card-img-top" alt="${element.nombre}">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">${element.nombre}</h5>
+                        <p class="card-text">${element.descripcion}</p>
+                        <button class="btn btn-secondary" onClick="agregarAlCarrito(${element.id});">Comprar</button>
+                    </div>
+                </div>
+            </div>`
     })
-    return totalProductos;
+
+    document.getElementById("productos").innerHTML = productosHTML
 }
 
-function listaProductos(productos) {
-    let eleccion = 0;
-    let cantidadPedida = 'Usted solicitó: \n';
-    productos.forEach(element => {
-        if (element.cantidad > 0) {
-            cantidadPedida += `${element.nombre} : ${element.cantidad} \n`
+renderProductos(); //Muestra productos en HTML
+guardarProductosLS(productos); //Guarda productos en formato String de la Array "Productos"
+
+
+const guardarProductosCarrito = (productos) => {
+    localStorage.setItem("carrito", JSON.stringify(productos));
+}
+
+const cargarProductosCarrito = () => {
+    return JSON.parse(localStorage.getItem("carrito")) || [];
+}
+
+const agregarAlCarrito = (id) => {
+    const productos = cargarProductosLS();
+    const productos_carrito = cargarProductosCarrito();
+    const producto = productos.find(element => element.id == id);
+    let existe = -1;
+    productos_carrito.forEach((el, index) => {
+        if (el.id == id) {
+            existe = index;
         }
-    });
-    alert(cantidadPedida)
-    eleccion = parseInt(prompt("¿Es correcto ?\n 1 - Sí \n 2 - No.\n 3 - Cancelar pedido."));
-    return eleccion
-}
-
-
-function costoTotal(producto) {
-    let totalPrecio = 0;
-    productos.forEach(element => {
-        totalPrecio += element.cantidad * element.precio;
-        console.log(totalPrecio)
-    });
-    return totalPrecio;
-}
-
-function reset(productos) {
-    productos.forEach(element => { element.cantidad = 0; })
-    alert("Realice su pedido nuevamente");
-}
-
-function opcionValida() {
-    return alert("Elija una opción válida");
-}
-
-do {
-    let nombreUsuario = prompt("Ingrese su Nombre");
-    if (nombreUsuario != "") {
-        alert("Bienvenido " + nombreUsuario + "! ¿Qué producto desea solicitar?")
-        console.log("Nombre del cliente " + nombreUsuario)
-        do {
-            tipoProducto = parseInt(prompt("Ingrese que tipo de producto desea seleccionando el la opción: \n 1-Café \n 2-Cookies \n 3-Porciones \n 4-Postres \n 0- Salir"))
-            if ((tipoProducto > 4 || tipoProducto < 0)) {
-                opcionValida();
-                console.log("Eligió una opción inválida");
-            }
-        } while (tipoProducto > 4 || tipoProducto < 0)
-        while (tipoProducto != 0) {
-            solicito = 1
-            switch (tipoProducto) {
-                case 1: do {
-                    producto = eleccionCafe(productos);
-                    if (producto > 3 || producto < 0 || isNaN(producto)) {
-                        opcionValida();
-                        console.log("Eligió una opción inválida");
-                    }
-                } while (producto > 3 || producto < 0 || isNaN(producto))
-                    while (producto != 0 && producto < 4 ) {
-                        productos[producto - 1].cantidad += 1;
-                        producto = eleccionCafeAgregar(productos); 
-                    } 
-                    break;
-                case 2: do {
-                    producto = eleccionCookie(productos);
-                    if (producto > 3 || producto < 0 || isNaN(producto)) {
-                        opcionValida();
-                        console.log("Eligió una opción inválida");
-                    }
-                } while (producto > 3 || producto < 0 || isNaN(producto))
-                    while (producto != 0 && producto < 4) {
-                        productos[producto + 2].cantidad += 1;
-                        producto = eleccionCookieAgregar(productos);
-                    }
-                    break;
-                case 3: do {
-                    producto = eleccionPorcion(productos);
-                    if (producto > 3 || producto < 0 || isNaN(producto)) {
-                        opcionValida();
-                        console.log("Eligió una opción inválida");
-                    }
-                } while (producto > 3 || producto < 0 || isNaN(producto))
-                    while (producto != 0 && producto < 4) {
-                        productos[producto + 5].cantidad += 1;
-                        producto = eleccionPorcionAgregar(productos)
-                    }
-                    break;
-                case 4: do {
-                    producto = eleccionPostre(productos);
-                    if (producto > 3 || producto < 0 || isNaN(producto)) {
-                        opcionValida();
-                        console.log("Eligió una opción inválida");
-                    }
-                } while (producto > 3 || producto < 0 || isNaN(producto))
-                    while (producto != 0 && producto < 4) {
-                        productos[producto + 8].cantidad += 1;
-                        producto = eleccionPostreAgregar(productos)
-                    }
-                    break;
-                default: opcionValida();
-                    console.log("Eligió una opción inválida");
-            } do {
-                tipoProducto = parseInt(prompt("Ingrese productos adicionales que desee solicitar: \n 1-Café \n 2-Cookies \n 3-Porciones \n 4-Postres \n 0- Finalizar"))
-                if ((tipoProducto > 4 || tipoProducto < 0)) {
-                    opcionValida();
-                    console.log("Eligió una opción inválida");
-                }
-            } while (tipoProducto > 4 || tipoProducto < 0)
-            if (tipoProducto == 0) {
-                eleccion = listaProductos(productos);
-                while (eleccion != 0) {
-                    switch (eleccion) {
-                        case 1:
-                            total = cantidadDeProductos(productos)
-                            precioTotal = costoTotal(productos)
-                            if (total >= 5) {
-                                totalConDescuento = precioTotal - parseFloat((precioTotal * descuento) / 100).toFixed(2);
-                                alert(nombreUsuario + " solicitó " + total + " productos.")
-                                alert(" Usted accederá al % 20 de nuestro descuento.");
-                                console.log("Accede al descuento");
-                                alert("Deberá abonar un total de $ " + totalConDescuento);
-                                console.log("TOTAL A PAGAR: $" + totalConDescuento);
-                                alert("¡Gracias por su compra!");
-                                console.log("¡GRACIAS POR SU COMPRA!")
-                            } else {
-                                if (total == 0) {
-                                    alert("No ha realizado compra.");
-                                } else {
-                                    alert(nombreUsuario + " " + "solicitó " + total + " productos.")
-                                    alert("Su monto total a pagar es de $ " + precioTotal);
-                                    console.log("TOTAL A PAGAR: $" + precioTotal);
-                                    alert("¡Gracias por su compra!");
-                                    console.log("¡GRACIAS POR SU COMPRA!")
-                                }
-                            }
-                            cierre = 1;
-                            eleccion = 0;
-                            break;
-                        case 2:
-                            reset(productos);
-                            eleccion = 0;
-                            cierre = 2;
-                            break;
-                        case 3:
-                            cierre = 1;
-                            eleccion = 0;
-                            alert("Su pedido ha sido cancelado.")
-                            console.log("PEDIDO CANCELADO");
-                            break;
-                        default:
-                            opcionValida()
-                            eleccion = listaProductos(productos);
-                    }
-                }
-            }
-        }
-        if (solicito === 0) {
-            alert("Usted no solicitó ninguno producto")
-        }
+    })
+    if (existe == -1) {
+        productos_carrito.push(producto);
     } else {
-        alert("Usted no ingresó un nombre");
-        console.log("Eligió una opción inválida");
-        cierre = 2;
+        productos_carrito[existe].cantidad += 1
+        productos_carrito[existe].precio = producto.precio * productos_carrito[existe].cantidad
     }
-} while (cierre == 2)
+    guardarProductosCarrito(productos_carrito);
+    renderProductos_carrito();
+}
 
+const quitarDelCarrito = (id) => {
+    let productos_carrito = cargarProductosCarrito();
+    productos_carrito = productos_carrito.filter((el) => {
+        return el.id != id;
+    })
+    guardarProductosCarrito(productos_carrito)
+    renderProductos_carrito()
+}
+
+const renderProductos_carrito = () => {
+    let totalprecio = 0;
+    let cantidadTotal = 0;
+    let productosCarritoHTML = "";
+    let productos_carrito = cargarProductosCarrito()
+    if (productos_carrito.length != 0) {
+        productos_carrito.forEach(element => {
+            totalprecio += element.precio
+            cantidadTotal += element.cantidad
+            productosCarritoHTML +=
+                `<div class="col-md-4 mb-4 d-flex justify-content-center">
+                    <div class="card text-center align-items-center border border-secondary" style="width: 18rem;">
+                        <div class="contenedorImagen">
+                            <img src="images/${element.imagen}" class="card-img-top" alt="${element.nombre}">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">${element.nombre}</h5>
+                            <p class="card-text">Cantidad pedida: ${element.cantidad}</p>
+                            <p class="card-text">Precio: $${element.precio}</p>
+                            <button class="btn btn-secondary" onClick="quitarDelCarrito(${element.id});">Quitar</button>
+                        </div>
+                    </div>
+            </div >`
+        })
+        document.getElementById("carrito").innerHTML = productosCarritoHTML
+    } else {
+        document.getElementById("carrito").innerHTML = `<p class="carritoVacio">¡Tu carrito está vacio!</p>`
+    }
+
+    if (cantidadTotal >= 5) {
+        totalprecio = totalprecio - ((totalprecio * 20) / 100)
+        document.querySelector(".total").innerHTML = `<span class="enunciadoDescuento">¡Por comprar 5 productos o mas !</span><br>¡Total con 20% descuento: $${totalprecio}!`
+    } else {
+        document.querySelector(".total").textContent = `Total: $${totalprecio}`
+    }
+    document.getElementById("contadorCarrito").textContent = cantidadTotal
+}
+
+document.addEventListener("DOMContentLoaded", e => (renderProductos_carrito()))
+
+const vaciarCarrito = () => {
+    localStorage.removeItem("carrito")
+    document.getElementById("carrito").innerHTML = `<p class="carritoVacio">¡Tu carrito está vacio!</p>`
+    document.querySelector(".total").textContent = `Total: $${0}`
+    document.getElementById("contadorCarrito").textContent = 0
+}
+let botonVaciarCarrito = document.getElementById("vaciarCarrito")
+
+botonVaciarCarrito.addEventListener("click", e => {
+    if (e.target.matches("#vaciarCarrito")) {
+        vaciarCarrito()
+    }
+})
+
+
+// INGRESAR SESION
+let botonIngresar = document.getElementById("ingresar");
+botonIngresar.addEventListener("click", validarSesion);
+
+function validarSesion(e) {
+    e.preventDefault();
+    let nombre = document.getElementById("nombre").value
+    let numeroCelular = document.getElementById("numeroCelular").value
+    let avisoCampoIncompletoNombre = document.getElementById("campoIncompletoNombre");
+    let avisoCampoIncompletoNumero = document.getElementById("campoIncompletoNumber");
+    if (nombre == "") {
+        avisoCampoIncompletoNombre.innerHTML = "¡Ingrese un nombre en el campo!"
+        return false;
+    } else {
+        avisoCampoIncompletoNombre.innerHTML = ""
+    }
+    if (numeroCelular == "") {
+        avisoCampoIncompletoNumero.innerHTML = "¡Ingrese un número en el campo!"
+        return false;
+    } else {
+        avisoCampoIncompletoNumero.innerHTML = ""
+    }
+    if (nombre != "" && numeroCelular != "") {
+        let sectionIngresado = document.getElementById("sectionIngresado")
+        let sectionIngreso = document.getElementById("sectionIngreso")
+        sectionIngreso.classList.add("none")
+        let ingresePedido = document.getElementById("ingresePedido")
+        ingresePedido.innerHTML = `BIENVENIDO <u>${nombre.toUpperCase()}</u> INGRESE SU PEDIDO `
+        sectionIngresado.classList.remove("none")
+        let cerrarSesion = document.getElementById("cerrarSesion")
+        return cerrarSesion;
+    }
+}
+cerrarSesion.addEventListener("click", e => {
+    if (e.target.matches("#cerrarSesion")) {
+        sectionIngreso.classList.remove("none")
+        sectionIngresado.classList.add("none")
+    }
+})

@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-image: url(../images/fondo.png);
+    background-attachment: fixed;
+}
+
+.none {
+    display: none !important;
+}
+
+.cerrarSesion {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 50px;
+    padding: 10px 20px;
+    font-size: 25px;
+    border-radius: 5px;
+    border: 0.2px solid black;
+    box-shadow: 0px;
+}
+
+
+h1 {
+    font-size: 150px;
+    text-align: center;
+    margin: 70px 0px;
+}
+
+h2 {
+    font-size: 70px;
+    text-align: center;
+    margin: 70px 0px 40px 0px;
+}
+
+.sectionIngresoFormulario {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    font-size: 30px;
+}
+
+.email {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.botonesFormulario {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.botonesIngreso {
+    padding: 10px 20px;
+}
+
+.error {
+    color: red;
+    text-align: center;
+}
+
+.carritoVacio{
+    color: red;
+    text-align: center;
+    font-size: 33px;
+}
+
+form{
+    width: 35%;
+    margin: 0 auto;
+}
+
+.number {
+    display: flex;
+}
+
+.number label {
+    flex-basis: 20%;
+}
+
+.number input {
+    flex-basis: 80%;
+}
+
+.fontCard{
+    font-size: 10wv;
+}
+
+.contenedorImagen{
+    height: 350px;
+    width: 100%;
+    object-fit: contain;
+}
+
+.contenedorImagen img{
+    height: 100%;
+    width: 100%;
+    
+}
+.contenedorImagen2  {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+
+}
+
+.contenedorImagen2 img{
+    object-fit: contain;
+}
+
+
+
+.vaciarCarrito {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 0.2px solid black;
+    box-shadow: 0px;
+}
+
+.total{
+    text-align: center;
+    font-size: 30px;
+    color: rgb(13, 159, 88);
+    font-weight: bold;
+}
+
+.enunciadoDescuento{
+    color: rgb(0, 0, 0);
+    font-size: 40px;
+}
+
+.imagenContadorDiv{
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 20px 20px 0px 0px;
+    height: 130px;
+    outline: 1px solid rgba(0, 0, 0, 0.583);
+}
+
+.imagenContadorDiv p{
+    position: absolute;
+    margin:0px 10px 0px 10px;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+}
+
+.imagenContador{
+    width: 100%;
+    height: 100%;
+}

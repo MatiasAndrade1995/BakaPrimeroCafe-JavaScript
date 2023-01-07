@@ -1,18 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PreEntrega1</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>PreEntrega3</title>
 </head>
-<body>
-    <header>
-        <h1>¡INGRESE SU PEDIDO!</h1>
-        <h2>¡ACCEDA DESDE LA VENTANA EMERGENTE!</h2>
-        <H3>¡Muchas gracias!</H3>
-    </header>
 
+<body class="container-fluid">
+    <header>
+        <h1>Baka Cafe</h1>
+    </header>
+    <main id="main">
+        <section id="sectionIngreso" class="sectionIngresoFormulario">
+            <form action="" method="" id="formularioIngreso">
+                <div class="flexFormulario">
+                    <div class="number">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Nombre" />
+                    </div>
+                    <div id="campoIncompletoNombre" class="error"></div>
+                    <div class="number">
+                        <label for="number">Celular</label>
+                        <input type="number" id="numeroCelular" name="number" placeholder="Número" />
+                    </div>
+                    <div id="campoIncompletoNumber" class="error"></div>
+                </div>
+                </div>
+                <div class="botonesFormulario">
+                    <input class="enviar botonesIngreso" name="ingresar" type="submit" value="Ingresar" id="ingresar">
+                    <input type="reset" name="reset" class="botonesIngreso">
+                </div>
+            </form>
+        </section>
+        <section id="sectionIngresado" class="none">
+            <a href="#titulocarrito">
+                <div class="imagenContadorDiv">
+                    <img src="images/logoBakaHeader.png" class="imagenContador">
+                    <p id="contadorCarrito">0</p>
+                </div>
+            </a>
+            <h2 id="ingresePedido"></h2>
+            <button id="cerrarSesion" class="cerrarSesion"> Cerrar sesión </button>
+            <div id="productos" class="row">
+            </div>
+            <h2 id="titulocarrito">CARRITO</h2>
+            <div id="carrito" class="row justify-content-center"></div>
+            <p class="total">Total</p>
+            <button id="vaciarCarrito" class="vaciarCarrito">Vaciar carrito</button>
+        </section>
+    </main>
+    <footer></footer>
+    <script src="js/arrayProductos.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
