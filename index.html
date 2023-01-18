@@ -7,13 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
     <title>PreEntrega3</title>
 </head>
 
 <body class="container-fluid">
     <header>
-        <h1>Baka Cafe</h1>
+        <h1 id="h1">Baka Cafe</h1>
     </header>
     <main id="main">
         <section id="sectionIngreso" class="sectionIngresoFormulario">
@@ -33,11 +36,14 @@
                 </div>
                 <div class="botonesFormulario">
                     <input class="enviar botonesIngreso" name="ingresar" type="submit" value="Ingresar" id="ingresar">
-                    <input type="reset" name="reset" class="botonesIngreso">
+                    <input type="reset" name="reset" class="botonesIngreso" id="resetear">
                 </div>
             </form>
         </section>
-        <section id="sectionIngresado" class="none">
+        <div class="text-center none">
+            <div class="spinner-border" style="width: 10rem; height: 10rem;" role="status"></div>
+        </div>
+        <section id="sectionIngresado" class="none ingresado">
             <a href="#titulocarrito">
                 <div class="imagenContadorDiv">
                     <img src="images/logoBakaHeader.png" class="imagenContador">
@@ -51,15 +57,24 @@
             <h2 id="titulocarrito">CARRITO</h2>
             <div id="carrito" class="row justify-content-center"></div>
             <p class="total">Total</p>
-            <button id="vaciarCarrito" class="vaciarCarrito">Vaciar carrito</button>
+            <div class="botonesParaCompra">
+                <button id="vaciarCarrito" class="vaciarCarrito">Vaciar carrito</button>
+                <button id="finalizarPedido" class="finalizarPedido"> Finalizar pedido</button>
+            </div>
         </section>
     </main>
-    <footer></footer>
-    <script src="js/arrayProductos.js"></script>
+    <footer class="row">
+        <div class="CopyrightMatiasAndrade">
+            Copyright Matias Andrade 2023©
+        </div>
+        <div class="bakaEslogan">
+            <a href="#h1">
+                Baka, Primero café.
+            </a>
+        </div>
+    </footer>
     <script src="js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
