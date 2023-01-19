@@ -20,9 +20,6 @@ const getAllProductos = async () => {
 }
 
 
-const cargarProductosLS = () => {
-    return JSON.parse(localStorage.getItem("productos")) || [];
-}
 const renderProductos = () => {
     setTimeout(() => {
         let productosHTML = "";
@@ -50,21 +47,25 @@ const guardarProductosCarrito = (productos) => {
 
 const cargarProductosCarrito = () => JSON.parse(localStorage.getItem("carrito")) || []; //const "nombre de la función" = () => valor a retonar; Return implícito sin utilizar llaves ({}) en una sola linea de código.
 
+const elseExiste = (productos_carrito, existe,producto) => {
+    productos_carrito[existe].cantidad += 1
+    productos_carrito[existe].precio = producto.precio * productos_carrito[existe].cantidad
+}
+
+
+
+
 const agregarAlCarrito = (id) => {
-    const productos = cargarProductosLS();
     const productos_carrito = cargarProductosCarrito();
     const producto = productos.find(element => element.id == id);
-    let elseExiste = () => {
-        productos_carrito[existe].cantidad += 1
-        productos_carrito[existe].precio = producto.precio * productos_carrito[existe].cantidad
-    }
+    
     let existe = -1;
     productos_carrito.forEach((el, index) => {
         if (el.id == id) {
             existe = index;
         }
     })
-    existe == -1 ? productos_carrito.push(producto) : elseExiste();
+    existe == -1 ? productos_carrito.push(producto) : elseExiste(productos_carrito, existe, producto);
     guardarProductosCarrito(productos_carrito);
     renderProductos_carrito();
 }
