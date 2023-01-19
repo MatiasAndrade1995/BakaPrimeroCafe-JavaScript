@@ -154,7 +154,7 @@ form{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin: 20px auto;
+    margin: 35px auto;
     padding: 10px 20px;
     font-size: 15px;
     border-radius: 5px;
@@ -166,7 +166,7 @@ form{
     display: flex;
         flex-direction: row;
         justify-content: center;
-        margin: 20px auto;
+        margin: 35px auto;
         padding: 10px 20px;
         font-size: 15px;
         border-radius: 5px;
