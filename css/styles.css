@@ -109,10 +109,12 @@ form{
 
 .number label {
     flex-basis: 20%;
+    margin-top: 10px;
 }
 
 .number input {
     flex-basis: 80%;
+    margin-top: 10px;
 }
 
 .fontCard{
@@ -192,6 +194,8 @@ form{
     margin: 20px 20px 0px 0px;
     height: 130px;
     outline: 1px solid rgba(0, 0, 0, 0.583);
+    z-index: 10000;
+    background-color: rgba(255, 255, 255, 0.542);
 }
 
 .imagenContadorDiv p{
@@ -199,7 +203,7 @@ form{
     margin:0px 10px 0px 10px;
     bottom: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 10000;
     color: rgb(0, 0, 0);
     font-size: 25px;
 }
@@ -219,6 +223,8 @@ footer {
     justify-content: space-between;
     align-items: center;
     margin-top: 90px;
+    padding: 10px 0;
+    z-index: 1000;
 }
 
 .CopyrightMatiasAndrade {
@@ -238,3 +244,4 @@ footer {
 .bakaEslogan a {
     color: black;
 }
+

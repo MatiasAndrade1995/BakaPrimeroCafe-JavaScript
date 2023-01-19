@@ -7,6 +7,7 @@ const $total = document.querySelector(".total");
 const $spinnerCarga = document.querySelector(".text-center");
 let productos;
 //FUNCIONES
+
 const getAllProductos = async () => {
     try {
         let res = await fetch("js/productos.json");
@@ -17,9 +18,8 @@ const getAllProductos = async () => {
         console.log(error.statu)
     }
 }
-const guardarProductosLS = (productos) => {
-    localStorage.setItem("productos", JSON.stringify(productos));
-}
+
+
 const cargarProductosLS = () => {
     return JSON.parse(localStorage.getItem("productos")) || [];
 }
@@ -42,7 +42,7 @@ const renderProductos = () => {
             </div>`
         })
         document.getElementById("productos").innerHTML = productosHTML
-    }, 3000)
+    }, 1250)
 }
 const guardarProductosCarrito = (productos) => {
     localStorage.setItem("carrito", JSON.stringify(productos));
@@ -154,7 +154,7 @@ function validarSesion(e) {
                 showConfirmButton: false,
                 timer: 3000
             })
-        }, 2000)
+        }, 1250)
     }
 }
 
@@ -163,7 +163,6 @@ document.addEventListener("DOMContentLoaded", async e => {
     await getAllProductos();
     renderProductos_carrito()
     renderProductos(); //Muestra productos en HTML
-    guardarProductosLS(productos); //Guarda productos en formato String de la Array "Productos"
 })
 
 document.addEventListener("click", e => {
@@ -182,6 +181,7 @@ document.addEventListener("click", e => {
                 $sectionIngresado.classList.add("none");
                 document.getElementById("numeroCelular").value = "";
                 document.getElementById("nombre").value = "";
+                vaciarCarrito();
             }
         })
     }
@@ -205,7 +205,7 @@ document.addEventListener("click", e => {
                 if (result.isConfirmed) {
                     Swal.fire(
                         '¡Carrito vaciado!',
-                        'Tu carrito ha sido vaciado, esperamos que no te vayas sin comprar :(',
+                        'Tu carrito ha sido vaciado, esperamos que no te vayas sin comprar &#128542;',
                         'success'
                     )
                     vaciarCarrito();
