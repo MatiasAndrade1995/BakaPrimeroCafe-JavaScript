@@ -6,16 +6,17 @@ const $contadorCarrito = document.getElementById("contadorCarrito");
 const $total = document.querySelector(".total");
 const $spinnerCarga = document.querySelector(".text-center");
 let productos;
-//FUNCIONES
 
+//FUNCIONES
 const getAllProductos = async () => {
     try {
         let res = await fetch("js/productos.json");
         let json = await res.json();
         if (res.ok == false) throw res;
+        console.log(res)
         productos = json.productos
     } catch (error) {
-        console.log(error.statu)
+        console.log(error.status)
     }
 }
 
@@ -53,13 +54,11 @@ const elseExiste = (productos_carrito, existe,producto) => {
 }
 
 
-
-
 const agregarAlCarrito = (id) => {
     const productos_carrito = cargarProductosCarrito();
     const producto = productos.find(element => element.id == id);
     
-    let existe = -1;
+    let existe = -1; // Si el index es -1 quiere decir que el elemento no esta presente en la array
     productos_carrito.forEach((el, index) => {
         if (el.id == id) {
             existe = index;
